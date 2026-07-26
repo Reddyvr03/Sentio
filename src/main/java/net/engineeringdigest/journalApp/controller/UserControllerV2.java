@@ -43,4 +43,10 @@ public class UserControllerV2 {
         userRepository.deleteByUserName(userName);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping
+    public ResponseEntity<?> greetings(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return new ResponseEntity<>("Hi "+authentication.getName(),HttpStatus.OK);
+    }
 }

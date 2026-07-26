@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://Reddyvr03:hLcDn9y9qhHGAXXB@cluster0.coi4m2z.mongodb.net/?appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+
+logging:
+  level:
+    net:
+      engineeringdigest:
+        journalApp: TRACE
+
+#logging:
+#  level:
+#    root:DEBUG
