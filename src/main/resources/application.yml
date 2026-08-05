@@ -4,6 +4,19 @@ spring:
       uri: mongodb+srv://Reddyvr03:hLcDn9y9qhHGAXXB@cluster0.coi4m2z.mongodb.net/?appName=Cluster0
       database: journaldb
       auto-index-creation: true
+  redis:
+    url: redis://default:FnfrmJ8syh9aHYRYMDeL8FrwadgrA2Qe@recess-vertical-title-34647.db.redis.io:17635
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: karthikswapnareddy@gmail.com
+    password: uwsy nzhw zgqw mvhi
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 logging:
   level:
@@ -11,6 +24,7 @@ logging:
       engineeringdigest:
         journalApp: TRACE
 
+weather_api_key: "763a11fd003633594b4ca216c05a75c4"
 #logging:
 #  level:
 #    root:DEBUG

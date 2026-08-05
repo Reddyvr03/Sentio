@@ -3,6 +3,7 @@ package net.engineeringdigest.journalApp.entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import net.engineeringdigest.journalApp.enums.Sentiment;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.repository.cdi.Eager;
@@ -23,5 +24,7 @@ public class JournalEntity {
     private String content;
 
     private LocalDateTime date;
+
+    private Sentiment sentiment;
 
 }

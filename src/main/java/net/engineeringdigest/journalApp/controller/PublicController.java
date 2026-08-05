@@ -2,6 +2,7 @@ package net.engineeringdigest.journalApp.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import net.engineeringdigest.journalApp.Service.UserService;
+import net.engineeringdigest.journalApp.cache.AppCache;
 import net.engineeringdigest.journalApp.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,8 @@ public class PublicController {
 
     @Autowired
     public UserService userService;
+
+
 
     @GetMapping("/health-check")
     public String healthCheck(){
@@ -42,4 +45,6 @@ public class PublicController {
             return false;
         }
     }
+
+
 }

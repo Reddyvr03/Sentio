@@ -2,6 +2,8 @@ package net.engineeringdigest.journalApp.controller;
 
 import net.engineeringdigest.journalApp.Repository.UserRepository;
 import net.engineeringdigest.journalApp.Service.UserService;
+import net.engineeringdigest.journalApp.Service.WeatherService;
+import net.engineeringdigest.journalApp.api.response.WeatherResponse;
 import net.engineeringdigest.journalApp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,9 @@ public class UserControllerV2 {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private WeatherService weatherService;
 
     public static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -47,6 +52,11 @@ public class UserControllerV2 {
     @GetMapping
     public ResponseEntity<?> greetings(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return new ResponseEntity<>("Hi "+authentication.getName(),HttpStatus.OK);
+        WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+        String greeting = "";
+        if (weatherResponse != null) {
+            greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();
+        }
+        return new ResponseEntity<>("Hi "+authentication.getName() + greeting,HttpStatus.OK);
     }
 }
