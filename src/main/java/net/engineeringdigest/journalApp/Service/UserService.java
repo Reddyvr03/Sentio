@@ -1,5 +1,6 @@
 package net.engineeringdigest.journalApp.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import net.engineeringdigest.journalApp.Repository.JournalEntryRepository;
 import net.engineeringdigest.journalApp.Repository.UserRepository;
 import net.engineeringdigest.journalApp.entity.JournalEntity;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import static net.engineeringdigest.journalApp.controller.UserControllerV2.passwordEncoder;
 
 @Component
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -29,16 +31,21 @@ public class UserService {
     public void saveEntry(User journalEntry){
         userRepository.save(journalEntry);
     }
-//    public boolean saveNewUser(@RequestBody User user){
-//        try {
-//            user.setPassword(passwordEncoder.encode(user.getPassword()));
-//            user.setRoles(Arrays.asList("USER"));
-//            userService.saveEntry(user);
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
+    public boolean saveNewUser(User user) {
+        try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoles(Arrays.asList("USER"));
+            userRepository.save(user);
+            return true;
+        } catch (Exception e) {
+            log.error("hahahhahhahahahah");
+            log.warn("hahahhahhahahahah");
+            log.info("hahahhahhahahahah");
+            log.debug("hahahhahhahahahah");
+            log.trace("hahahhahhahahahah");
+            return false;
+        }
+    }
 
     public void saveAdmin(@RequestBody User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
